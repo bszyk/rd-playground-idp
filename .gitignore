@@ -1,0 +1,33 @@
+# ignore everything in the root except the "wp-content" directory.
+!wp-content/
+
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins", "plugins", "themes" directory
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+themes/
+
+# ignore these plugins
+wp-content/plugins/hello.php
+
+# ignore specific themes
+wp-content/themes/twenty*/
+
+# ignore node dependency directories
+node_modules/
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+plugins/wp-rest-api-authentication/
+plugins/jwt-auth/
+plugins/learndash-propanel/
+plugins/miniorange-saml-20-single-sign-on/
+plugins/miniorange-wp-as-saml-idp
+plugins/sfwd-lms/
+uploads/
+
+.DS_Store
