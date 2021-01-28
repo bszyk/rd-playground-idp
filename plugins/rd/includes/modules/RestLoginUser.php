@@ -57,33 +57,4 @@ class RestLoginUser {
 
 		return new \WP_REST_Response( null, 200 );
 	}
-
-	/**
-	 * @
-	 */
-	public function login_user() {
-		if ( ! empty( $_POST ) || ! isset( $_POST['login_user_nonce'] )
-		|| ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['login_user_nonce'] ) ), 'login_user' ) ) {
-
-			if ( isset( $_POST['login_username'] ) && isset( $_POST['login_password'] ) && isset( $_POST['permalink'] ) ) {
-				$username  = sanitize_text_field( wp_unslash( $_POST['login_username'] ) );
-				$password  = sanitize_text_field( wp_unslash( $_POST['login_password'] ) );
-				$permalink = sanitize_text_field( wp_unslash( $_POST['permalink'] ) );
-
-				$creds = array(
-					'user_login'    => $username,
-					'user_password' => $password,
-					'remember'      => true,
-				);
-
-				$user = wp_signon( $creds, false );
-
-				if ( is_wp_error( $user ) ) {
-						echo esc_html( $user->get_error_message() );
-				}
-
-				wp_safe_redirect( $permalink );
-			}
-		}
-	}
 }
